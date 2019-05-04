@@ -1,0 +1,40 @@
+//nCr and nPr finding.........
+
+#include <stdio.h>
+long nPr(int n, int r)
+{
+    long p=1;
+    int i;
+    for(i=1; i<=r; i++)
+    {
+        p*=(n-r+i);///<difference + i> jekhane <i=1 to r>
+    } ///karon 7p3=7*6*5 totha <7 er por 3 bar>
+    return p;
+}
+long nCr(int n, int r)
+{
+    long c=1;
+    int i;
+    for(i=1; i<=r; i++)
+    {
+        c*=(n-r+i);
+        c/=i;
+    }
+    return c;
+}
+int main()
+{
+    long n,r,m;
+    while(1)
+    {
+        scanf("%ld %ld",&n,&r);
+        if(n==0 && r==0)return 0;
+        m=n-r;
+        if(r<m)
+            m=r; ///soto manti ba difference j t soto hobe seti r a neya
+        r=m; ///karon nCr=nC(n-r)
+
+        printf("nCr=%ld\nnPr=%ld\n",nCr(n,r),nPr(n,r));
+    }
+    return 0;
+}
